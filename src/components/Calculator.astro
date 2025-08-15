@@ -1,0 +1,365 @@
+---
+import { DataService } from "../services/DataService.js";
+
+const materials = await DataService.getMaterials();
+const products = await DataService.getProducts();
+const examples = await DataService.getExamples();
+---
+
+<section class="calculator" id="calculadora">
+  <div class="container">
+    <div class="section-header">
+      <h2>Calculadora de Puntos</h2>
+      <p>Ingresa el peso de tus materiales y descubre cuántos puntos tienes</p>
+    </div>
+
+    <div class="calculator-container">
+      <div class="input-section">
+        <h3>Tus Materiales</h3>
+
+        {
+          materials.map((material: any) => (
+            <div class="material-input">
+              <div class="material-header">
+                <span class="material-icon">{material.icon}</span>
+                <label>
+                  {material.name} ({material.unit})
+                </label>
+              </div>
+              <input
+                type="number"
+                id={material.id}
+                min="0"
+                step="0.1"
+                placeholder="0.0"
+                data-points-per-unit={material.pointsPerUnit}
+              />
+              <span class="points-rate">
+                {material.pointsPerUnit} puntos por {material.unit}
+              </span>
+            </div>
+          ))
+        }
+
+        <button id="calculate-btn" class="calculate-btn">Calcular Puntos</button
+        >
+      </div>
+
+      <div class="results-section">
+        <h3>Tus Puntos</h3>
+
+        <div class="total-points">
+          <span class="points-number" id="total-points">0</span>
+          <span class="points-text">puntos totales</span>
+        </div>
+
+        <div class="breakdown" id="breakdown">
+          {
+            materials.map((material: any) => (
+              <div class="breakdown-item">
+                <span>{material.name}:</span>
+                <span id={`${material.id}-points`}>0 puntos</span>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="recommendations" id="recommendations">
+          <h4>¿Qué puedes obtener?</h4>
+          <div id="available-products">
+            <p>Ingresa tus materiales para ver qué productos puedes obtener</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quick-examples">
+      <h3>Ejemplos Rápidos</h3>
+      <div class="examples-grid">
+        {
+          examples.map((example: any) => (
+            <div
+              class="example"
+              data-example={JSON.stringify(example.materials)}
+            >
+              <div class="example-materials">{example.description}</div>
+              <div class="example-arrow">→</div>
+              <div class="example-result">{example.expectedPoints} puntos</div>
+              <div class="example-product">{example.productName}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { CalculatorApp } from "../scripts/CalculatorApp.js";
+
+  // Initialize the app when DOM is loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    new CalculatorApp();
+  });
+</script>
+
+<style>
+  /* ...existing code... */
+  .calculator {
+    background: white;
+    padding: 5rem 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #16a34a;
+    margin-bottom: 1rem;
+  }
+
+  .section-header p {
+    font-size: 1.25rem;
+    color: #6b7280;
+  }
+
+  .calculator-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .input-section,
+  .results-section {
+    background: #f9fafb;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+  }
+
+  .input-section h3,
+  .results-section h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .material-input {
+    margin-bottom: 1.5rem;
+  }
+
+  .material-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .material-icon {
+    font-size: 1.25rem;
+  }
+
+  .material-input label {
+    font-weight: 500;
+    color: #374151;
+  }
+
+  .material-input input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .material-input input:focus {
+    outline: none;
+    border-color: #22c55e;
+  }
+
+  .points-rate {
+    font-size: 0.875rem;
+    color: #16a34a;
+    font-weight: 500;
+  }
+
+  .calculate-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .calculate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+  }
+
+  .total-points {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .points-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #16a34a;
+  }
+
+  .points-text {
+    font-size: 1rem;
+    color: #6b7280;
+  }
+
+  .breakdown {
+    margin-bottom: 2rem;
+  }
+
+  .breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .breakdown-item:last-child {
+    border-bottom: none;
+  }
+
+  .recommendations h4 {
+    color: #374151;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .available-products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .available-product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #d1fae5;
+  }
+
+  .product-name {
+    font-weight: 500;
+    color: #374151;
+  }
+
+  .product-points {
+    color: #16a34a;
+    font-weight: 600;
+  }
+
+  .quick-examples {
+    text-align: center;
+  }
+
+  .quick-examples h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 2rem;
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .example {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid #bbf7d0;
+  }
+
+  .example:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.15);
+  }
+
+  .example-materials {
+    font-size: 0.875rem;
+    color: #374151;
+    margin-bottom: 0.5rem;
+  }
+
+  .example-arrow {
+    font-size: 1.5rem;
+    color: #16a34a;
+    margin: 0.5rem 0;
+  }
+
+  .example-result {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #16a34a;
+  }
+
+  .example-product {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .calculator {
+      padding: 3rem 0;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+    }
+
+    .calculator-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .input-section,
+    .results-section {
+      padding: 1.5rem;
+    }
+
+    .points-number {
+      font-size: 2.5rem;
+    }
+
+    .examples-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

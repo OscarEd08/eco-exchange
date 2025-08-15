@@ -1,0 +1,23 @@
+[
+  {
+    "id": "plastic",
+    "name": "Plástico",
+    "unit": "kg",
+    "pointsPerUnit": 4,
+    "icon": "🍾"
+  },
+  {
+    "id": "cardboard",
+    "name": "Cartón",
+    "unit": "kg",
+    "pointsPerUnit": 2,
+    "icon": "📦"
+  },
+  {
+    "id": "paper",
+    "name": "Papel/Hojas",
+    "unit": "kg",
+    "pointsPerUnit": 3,
+    "icon": "📄"
+  }
+]

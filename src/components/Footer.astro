@@ -1,0 +1,215 @@
+---
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="logo">
+          <span class="logo-icon">♻️</span>
+          <div class="logo-text">
+            <h3>EcoExchange</h3>
+            <p>I.E. 5080 Sor Ana de los Angeles</p>
+          </div>
+        </div>
+        <p class="description">
+          Transformando residuos en oportunidades. Juntos construimos un futuro más sostenible 
+          para nuestra comunidad soranina.
+        </p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Navegación</h4>
+        <ul class="footer-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#como-funciona">¿Cómo funciona?</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#calculadora">Calculadora</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Puntos de Intercambio</h4>
+        <ul class="info-list">
+          <li>🍾 Plástico: 4 puntos/kg</li>
+          <li>📦 Cartón: 2 puntos/kg</li>
+          <li>📄 Papel: 3 puntos/kg</li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Información</h4>
+        <ul class="info-list">
+          <li>📍 Patio principal del colegio</li>
+          <li>🕐 Horario: Durante los recreos</li>
+          <li>📅 Lunes a Viernes</li>
+          <li>👥 Para todos los soraninos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-stats">
+        <div class="stat">
+          <span class="stat-number">♻️</span>
+          <span class="stat-text">Materiales reciclados</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">🌱</span>
+          <span class="stat-text">Ambiente protegido</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">🎒</span>
+          <span class="stat-text">Productos entregados</span>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2025 EcoExchange - I.E. 5080 Sor Ana de los Angeles. 
+        Creado con 💚 para los soraninos.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+    color: white;
+    padding: 3rem 0 1rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    color: #22C55E;
+    margin-bottom: 1rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+  }
+
+  .logo-text h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .logo-text p {
+    font-size: 0.875rem;
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  .description {
+    color: #D1D5DB;
+    line-height: 1.6;
+    font-size: 0.875rem;
+  }
+
+  .footer-links,
+  .info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links li,
+  .info-list li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links a {
+    color: #D1D5DB;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    color: #22C55E;
+  }
+
+  .info-list li {
+    color: #D1D5DB;
+    font-size: 0.875rem;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #374151;
+    padding-top: 2rem;
+    text-align: center;
+  }
+
+  .footer-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .stat-text {
+    color: #D1D5DB;
+    font-size: 0.875rem;
+  }
+
+  .copyright {
+    color: #9CA3AF;
+    font-size: 0.875rem;
+  }
+
+  .copyright p {
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      padding: 2rem 0 1rem;
+    }
+
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .footer-stats {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .logo {
+      justify-content: center;
+    }
+  }
+</style>

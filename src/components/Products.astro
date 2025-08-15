@@ -1,0 +1,214 @@
+---
+import { DataService } from "../services/DataService.js";
+
+const products = await DataService.getProducts();
+---
+
+<section class="products" id="productos">
+  <div class="container">
+    <div class="section-header">
+      <h2>Productos Disponibles</h2>
+      <p>
+        Descubre todos los increíbles productos que puedes obtener con tus
+        puntos
+      </p>
+    </div>
+
+    <div class="products-grid">
+      {
+        products.map((product: any) => (
+          <div class={`product-card ${product.featured ? "featured" : ""}`}>
+            {product.featured && (
+              <div class="featured-badge">¡Más Popular!</div>
+            )}
+            <div class="product-image">{product.icon}</div>
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+            <div class="price">
+              <span class="points">{product.points} puntos</span>
+            </div>
+            <div class="materials-needed">
+              <small>
+                Equivale a: {product.materials.plastic}kg de plástico o{" "}
+                {product.materials.cardboard}kg de cartón
+              </small>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="info-box">
+      <h3>💡 ¡Tip de Soranino!</h3>
+      <p>
+        Puedes combinar diferentes materiales para alcanzar los puntos que
+        necesitas. Por ejemplo: 2kg de plástico + 2kg de papel = 8 + 6 = 14
+        puntos total.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .products {
+    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+    padding: 5rem 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #16a34a;
+    margin-bottom: 1rem;
+  }
+
+  .section-header p {
+    font-size: 1.25rem;
+    color: #6b7280;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .product-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(34, 197, 94, 0.15);
+  }
+
+  .product-card.featured {
+    border: 2px solid #22c55e;
+    transform: scale(1.05);
+  }
+
+  .product-card.featured:hover {
+    transform: scale(1.05) translateY(-8px);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .product-image {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.75rem;
+  }
+
+  .product-card p {
+    color: #6b7280;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .price {
+    margin-bottom: 1rem;
+  }
+
+  .points {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  .materials-needed {
+    background: #f3f4f6;
+    padding: 0.75rem;
+    border-radius: 8px;
+    color: #6b7280;
+  }
+
+  .materials-needed small {
+    font-size: 0.875rem;
+  }
+
+  .info-box {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid #f59e0b;
+  }
+
+  .info-box h3 {
+    color: #92400e;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .info-box p {
+    color: #78350f;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .products {
+      padding: 3rem 0;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+    }
+
+    .products-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .product-card.featured {
+      transform: none;
+    }
+
+    .product-card.featured:hover {
+      transform: translateY(-8px);
+    }
+
+    .product-image {
+      font-size: 3rem;
+    }
+  }
+</style>

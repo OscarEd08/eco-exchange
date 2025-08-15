@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "name": "Cartuchera Pequeña",
+    "description": "Perfecta para guardar tus lápices y plumas favoritas.",
+    "points": 10,
+    "icon": "✏️",
+    "featured": false,
+    "materials": {
+      "plastic": 2.5,
+      "cardboard": 5,
+      "paper": 3.33
+    }
+  },
+  {
+    "id": 2,
+    "name": "Estuche Grande",
+    "description": "Amplio estuche para todos tus útiles escolares.",
+    "points": 16,
+    "icon": "👝",
+    "featured": true,
+    "materials": {
+      "plastic": 4,
+      "cardboard": 8,
+      "paper": 5.33
+    }
+  },
+  {
+    "id": 3,
+    "name": "Porta Vasos",
+    "description": "Mantén tus bebidas seguras y el ambiente limpio.",
+    "points": 12,
+    "icon": "☕",
+    "featured": false,
+    "materials": {
+      "plastic": 3,
+      "cardboard": 6,
+      "paper": 4
+    }
+  },
+  {
+    "id": 4,
+    "name": "Organizador de Escritorio",
+    "description": "Mantén tu área de estudio ordenada y productiva.",
+    "points": 20,
+    "icon": "📚",
+    "featured": false,
+    "materials": {
+      "plastic": 5,
+      "cardboard": 10,
+      "paper": 6.67
+    }
+  },
+  {
+    "id": 5,
+    "name": "Bolsa Eco-Friendly",
+    "description": "Bolsa reutilizable para tus compras y actividades.",
+    "points": 14,
+    "icon": "🎒",
+    "featured": false,
+    "materials": {
+      "plastic": 3.5,
+      "cardboard": 7,
+      "paper": 4.67
+    }
+  },
+  {
+    "id": 6,
+    "name": "Kit de Siembra",
+    "description": "Todo lo necesario para cultivar tu propia planta.",
+    "points": 18,
+    "icon": "🌱",
+    "featured": false,
+    "materials": {
+      "plastic": 4.5,
+      "cardboard": 9,
+      "paper": 6
+    }
+  }
+]
